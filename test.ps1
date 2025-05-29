@@ -1,14 +1,24 @@
+$boundary = "----=_NextPart_000_0000_01D6C4A6.5C6F8B80"
 $body = @"
 From: "John" <sender@example.com>
-Reply-To: sender@example.com
 To: recipient@example.com
-Subject: Testing Email Workers Local Dev
-Content-Type: text/html; charset="windows-1252"
-X-Mailer: Curl
-Date: Tue, 27 Aug 2024 08:49:44 -0700
-Message-ID: <6114391943504294873000@ZSH-GHOSTTY>
+Subject: Testing Email Workers Local Dev With Attachment
+Message-ID: <test123@example.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="$boundary"
 
-<div data-ntes="ntes_mail_body_root" style="line-height:1.7;color:#000000;font-size:14px;font-family:Arial"><div>123</div></div>
+--$boundary
+Content-Type: text/html; charset="utf-8"
+
+<div>这是一封带附件的测试邮件</div>
+
+--$boundary
+Content-Type: text/plain; name="test.txt"
+Content-Disposition: attachment; filename="test.txt"
+Content-Transfer-Encoding: base64
+
+aGVsbG8K
+--$boundary--
 "@
 
 curl.exe --request POST 'http://localhost:8787/cdn-cgi/handler/email' `
