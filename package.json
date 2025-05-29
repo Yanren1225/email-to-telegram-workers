@@ -14,5 +14,10 @@
 		"typescript": "^5.5.2",
 		"vitest": "~3.0.7",
 		"wrangler": "^4.17.0"
+	},
+	"dependencies": {
+		"@types/html-to-text": "^9.0.4",
+		"html-to-text": "^9.0.5",
+		"postal-mime": "^2.4.3"
 	}
 }
