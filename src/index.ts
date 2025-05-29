@@ -3,9 +3,6 @@ import { htmlToText } from 'html-to-text';
 
 export default {
 	async email(message, env, ctx): Promise<void> {
-		// const parse = new PostalMime.default();
-		// const rawEmail = new Response(message.raw);
-
 		const email = await PostalMime.parse(message.raw);
 
 		const telegramMessage = `
@@ -13,10 +10,8 @@ From: ${email.from.address} (${email.from.name || 'No Name'})
 To: ${email.to ? email.to.map(addr => addr.address).join(', ') : 'No To Address'}
 Subject: ${email.subject}
 
-${htmlToText(email.html ?? '')}
+${email.text ?? htmlToText(email.html ?? '')}
 		`;
-
-		console.log('Telegram message:', telegramMessage);
 
 		const TELEGRAM_BOT_TOKEN = env.BOT_TOKEN;
 		const TELEGRAM_CHAT_ID = env.CHAT_ID;
