@@ -8,10 +8,10 @@
 	},
 	"send_email": [
 		{
-			"name": "nihaocun20001225@gmail.com"
+			"name": "yanren1225@gmail.com"
 		}
 	],
 	"vars": {
-		"FORWARDING_EMAIL": "nihaocun20001225@gmail.com"
+		"FORWARDING_EMAIL": "yanren1225@gmail.com"
 	}
 }
